@@ -77,15 +77,9 @@ class AuthService
 
     public function getValidToken($google_token)
     {
-        $this->client->setAccessToken($google_token);
+        $this->setAccessToken($google_token);
 
-
-        if ($this->client->isAccessTokenExpired()) {
-            $refreshed_token = $this->client->getRefreshToken();
-            $this->client->fetchAccessTokenWithRefreshToken($refreshed_token);
-        }
-
-        return $this->client->getAccessToken();
+        return [!$this->client->isAccessTokenExpired(), $this->client->getAccessToken()];
     }
 
     /**
