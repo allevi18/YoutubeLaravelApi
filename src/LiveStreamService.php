@@ -90,6 +90,7 @@ class LiveStreamService extends AuthService
              * object for the liveBroadcast resource's status ["private, public or unlisted"]
              */
             $this->googleLiveBroadcastStatus->setPrivacyStatus($privacy_status);
+            $this->googleLiveBroadcastStatus->setSelfDeclaredMadeForKids(true);
 
             /**
              * API Request [inserts the liveBroadcast resource]
