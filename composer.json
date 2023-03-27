@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "google/apiclient": "^2.0"
+        "google/apiclient": "*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.3"
