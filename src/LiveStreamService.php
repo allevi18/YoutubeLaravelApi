@@ -20,11 +20,13 @@ class LiveStreamService extends AuthService
     protected $googleYoutubeCdnSettings;
     protected $googleYoutubeLiveStream;
     protected $googleYoutubeVideoRecordingDetails;
+    protected $googleLiveBroadcastContentDetails;
 
     public function __construct()
     {
         parent::__construct();
         $this->googleLiveBroadcastSnippet = new \Google_Service_YouTube_LiveBroadcastSnippet;
+        $this->googleLiveBroadcastContentDetails = new \Google_Service_YouTube_LiveBroadcastContentDetails;
         $this->googleLiveBroadcastStatus = new \Google_Service_YouTube_LiveBroadcastStatus;
         $this->googleYoutubeLiveBroadcast = new \Google_Service_YouTube_LiveBroadcast;
         $this->googleYoutubeLiveStreamSnippet = new \Google_Service_YouTube_LiveStreamSnippet;
@@ -92,12 +94,16 @@ class LiveStreamService extends AuthService
             $this->googleLiveBroadcastStatus->setPrivacyStatus($privacy_status);
             $this->googleLiveBroadcastStatus->setSelfDeclaredMadeForKids(true);
 
+
             /**
              * API Request [inserts the liveBroadcast resource]
              */
             $this->googleYoutubeLiveBroadcast->setSnippet($this->googleLiveBroadcastSnippet);
             $this->googleYoutubeLiveBroadcast->setStatus($this->googleLiveBroadcastStatus);
             $this->googleYoutubeLiveBroadcast->setKind('youtube#liveBroadcast');
+
+            $this->googleLiveBroadcastContentDetails->setEnableAutoStart(true);
+            $this->googleYoutubeLiveBroadcast->setContentDetails($this->googleLiveBroadcastContentDetails);
 
             /**
              * Execute Insert LiveBroadcast Resource Api [return an object that contains information about the new broadcast]
