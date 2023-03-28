@@ -40,7 +40,7 @@ class AuthenticateService extends AuthService {
 		$params = array_filter($params);
 		$part = 'snippet';
 		$service = new \Google_Service_YouTube($this->client);
-		return $service->channels->listChannels($part, $params);
+        return $service->channels->listChannels($part, $params)->toSimpleObject();
 	}
 
 	protected function liveStreamTest($token) {
@@ -103,7 +103,7 @@ class AuthenticateService extends AuthService {
 
 		} catch (\Google_Service_Exception $e) {
 			/**
-			 *  This error is thrown if the Service is 
+			 *  This error is thrown if the Service is
 			 * 	either not available or not enabled for the specific account
 			 */
 			return false;

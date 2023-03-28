@@ -22,6 +22,7 @@ class LiveStreamService extends AuthService
     protected $googleYoutubeVideoRecordingDetails;
     protected $googleLiveBroadcastContentDetails;
 
+
     public function __construct()
     {
         parent::__construct();
@@ -92,7 +93,7 @@ class LiveStreamService extends AuthService
              * object for the liveBroadcast resource's status ["private, public or unlisted"]
              */
             $this->googleLiveBroadcastStatus->setPrivacyStatus($privacy_status);
-            $this->googleLiveBroadcastStatus->setSelfDeclaredMadeForKids(true);
+//          $this->googleLiveBroadcastStatus->setSelfDeclaredMadeForKids(true);
 
 
             /**
@@ -286,7 +287,7 @@ class LiveStreamService extends AuthService
 
 
                 if ($video instanceof Video) {
-                    $video->offsetSet('tags', $data["tag_array"]);
+                    $video->offsetSet('tags', $tagsArray);
                 }
 
                 /**
