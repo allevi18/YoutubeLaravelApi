@@ -22,7 +22,11 @@ class AuthService
         $this->client->setRedirectUri(\Config::get('google-config.redirect_url'));
 
         $this->client->setScopes([
+            "https://www.googleapis.com/auth/youtube.force-ssl",
             'https://www.googleapis.com/auth/youtube',
+            'https://www.googleapis.com/auth/youtube.readonly',
+            'https://www.googleapis.com/auth/youtubepartner-channel-audit',
+            'https://www.googleapis.com/auth/yt-analytics.readonly'
         ]);
 
         $this->client->setAccessType('offline');
